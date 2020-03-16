@@ -1,0 +1,31 @@
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+  google.charts.load('current', {
+    'packages':['geochart'],
+    // Note: you will need to get a mapsApiKey for your project.
+    // See: https://developers.google.com/chart/interactive/docs/basic_load_libs#load-settings
+    'mapsApiKey': 'AIzaSyD-9tSrke72PouQMnMX-a7eZSW0jkFMBWY'
+  });
+  google.charts.setOnLoadCallback(drawRegionsMap);
+
+  function drawRegionsMap() {
+    var data = google.visualization.arrayToDataTable([
+      ['Country', 'Per 1 million population /'],
+      {% for x in stats %}
+      ['{{x.0}}', {{x.8}}],
+      {% endfor %}
+    ]);
+
+    var options = {
+      colorAxis: {colors: ["#ad3b3b", "#ff0000", "#c70000", "#910000", "#660000", "#3d0000",],},
+      backgroundColor: { fill:'transparent'},
+    };
+
+    var chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
+
+    chart.draw(data, options);
+  }
+</script>
+<div class="center">
+  <div class="center" id="regions_div" style="width: 70%; height: 100%;"></div>
+</div>

@@ -1,0 +1,30 @@
+<table class="table table-bordered table-sm">
+  <thead>
+    <tr>
+      <th scope="col">Country:</th>
+      <th scope="col">Number:</th>
+      <th scope="col">New cases:</th>
+      <th scope="col">Total deaths:</th>
+      <th scope="col">New deaths:</th>
+      <th scope="col">Total recovered:</th>
+      <th scope="col">Active cases:</th>
+      <th scope="col">Serious critical:</th>
+      <th scope="col">Total cases / 1M pop:</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for x in stats %}
+    <tr>
+      <td><strong>{{x.0}}</strong></td>
+      <td>{{x.1}}</td>
+      <td>{{x.2}}</td>
+      <td class="text-danger"><strong>{{x.3}}</strong></td>
+      <td class="text-danger"><strong>{{x.4}}</strong></td>
+      <td class="text-success"><strong>{{x.5}}</strong></td>
+      <td>{{x.6}}</td>
+      <td>{{x.7}}</td>
+      <td>{{x.8}}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
